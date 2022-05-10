@@ -4,9 +4,11 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        configureNextButton();
     }
 
     public void upClick (View v)
@@ -66,5 +69,19 @@ public class MainActivity extends AppCompatActivity {
         TextView counterView = (TextView) findViewById(R.id.counterView);
         counterView.setText("Number of little ghosts: " + numDucks);
     }
+
+    private void configureNextButton()
+    {
+        Button nextButton = (Button) findViewById(R.id.nextButton);
+        nextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                startActivity(new Intent(MainActivity.this, SecondActivity.class));
+            }
+        });
+    }
+
+
 
 }//end mainActivity class
